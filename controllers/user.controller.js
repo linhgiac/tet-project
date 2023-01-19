@@ -85,6 +85,9 @@ const userController = {
             return res.status(500).json({ msg: error.message });
         }
     },
+    logout: (req, res) => {
+        res.json({ msg: 'Logout successfully!' });
+    },
 };
 
 function isEmail(email) {
