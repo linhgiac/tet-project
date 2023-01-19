@@ -1,5 +1,6 @@
 const { isEmpty } = require('lodash');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const Users = require('../models/user.model');
 
@@ -52,6 +53,38 @@ const userController = {
             return res.status(500).json({ msg: error.message });
         }
     },
+    login: async (req, res) => {
+        try {
+            const { email, password } = req.body;
+
+            //Check fill all fields
+            if (!email || !password) {
+                res.status(400).json({ msg: 'Please fill in all fields' });
+            }
+
+            const user = await Users.findOne({ email });
+            console.log('user', user);
+            //Check not existed email
+            if (isEmpty(user)) {
+                return res
+                    .status(400)
+                    .json({ msg: "This email doesn't exist" });
+            }
+
+            //Compare password
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) {
+                res.status(400).json({ msg: 'Password is incorrect!' });
+            }
+
+            const accessToken = await createAccessToken({ id: user._id });
+            // console.log('accessToken', accessToken);
+
+            res.json({ msg: 'Login test!', accessToken });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
 };
 
 function isEmail(email) {
@@ -62,5 +95,11 @@ function isEmail(email) {
 
     return false;
 }
+const createAccessToken = async payload => {
+    return await jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '2d',
+    });
+};
+
 
 module.exports = userController;
