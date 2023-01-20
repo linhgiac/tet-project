@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.logo{
+  &:hover{
+    cursor: pointer;
+  }
+}
+.button{
+  font-weight: 600;
+  button{
+    height: 40px;
+    a{
+      font-weight: 700;
+    }
+  }
+  .text-btn{
+    &:hover{
+      color: $primary-color;
+      background-color: inherit;
+    }
+  }
+}

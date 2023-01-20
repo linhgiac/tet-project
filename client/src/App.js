@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
+import Signup from './pages/Signup/Signup';
 
 function App() {
     return (
         <Router>
             <div className="App">
+                {window.location.href.includes('signup') &&
+                    window.location.href.includes('login') && <Header />}
                 <Routes>
                     <Route
                         path="/"
@@ -18,8 +21,8 @@ function App() {
                         element={<Login />}
                     />
                     <Route
-                        path="/register"
-                        element={<Register />}
+                        path="/signup"
+                        element={<Signup />}
                     />
                 </Routes>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Home = () => {
-    return <div>Home</div>;
+    return <div>Whereas disregard and contempt for human rights have resulted</div>;
 };
 
 export default Home;

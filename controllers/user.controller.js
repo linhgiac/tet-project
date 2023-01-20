@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const Users = require('../models/user.model');
 
 const userController = {
-    register: async (req, res) => {
+    signup: async (req, res) => {
         try {
             const { name, email, password } = req.body;
 
@@ -48,7 +48,7 @@ const userController = {
             //Save
             await newUser.save();
 
-            res.json({ msg: 'Register Test', data: newUser });
+            res.json({ msg: 'Signup Test', data: newUser });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
