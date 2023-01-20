@@ -48,7 +48,7 @@ const Login = () => {
                     <div className={classNames('mt-8 font-bold text-xl')}>
                         New to Mentimeter?{' '}
                         <a
-                            href="/login"
+                            href="/signup"
                             style={{ color: '#196CFF' }}
                             className="no-underline">
                             Sign up now

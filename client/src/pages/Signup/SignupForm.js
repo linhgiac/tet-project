@@ -2,10 +2,26 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './Signup.module.scss';
+import axios from 'axios';
 import { Button, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
-    const handleSubmit = () => {};
+  const navigate = useNavigate();
+  const handleSubmit = async value => {
+      console.log('value', value);
+      try {
+          console.log('process.env.HOST', process.env.REACT_APP_HOST);
+          const response = await axios.post(
+              `${process.env.REACT_APP_HOST}/user/signup`,
+              value
+          );
+          console.log('response', response);
+          navigate('/');
+      } catch (error) {
+          console.log('error', error);
+      }
+  };
     return (
         <div className={classNames(styles['email-signup-container'])}>
             <div
