@@ -8,7 +8,11 @@ const SignupForm = () => {
     const handleSubmit = () => {};
     return (
         <div className={classNames(styles['email-signup-container'])}>
-            <div>or using email</div>
+            <div
+                style={{ color: 'rgba(16, 24, 52, 0.5)', fontSize: '14px' }}
+                className={classNames('mt-8 mb-4')}>
+                or using email
+            </div>
             <Form
                 name="signupForm"
                 layout="vertical"
@@ -24,7 +28,10 @@ const SignupForm = () => {
                         { required: true, message: 'Please input your name!' },
                     ]}
                     className={classNames(styles['form-item'])}>
-                    <Input size="large" />
+                    <Input
+                        size="large"
+                        className="border-2"
+                    />
                 </Form.Item>
                 <Form.Item
                     label={<div className={styles['form-label']}>Email</div>}
@@ -33,7 +40,10 @@ const SignupForm = () => {
                         { required: true, message: 'Please input your email!' },
                     ]}
                     className={classNames(styles['form-item'])}>
-                    <Input size="large" />
+                    <Input
+                        size="large"
+                        className="border-2"
+                    />
                 </Form.Item>
                 <Form.Item
                     label={<div className={styles['form-label']}>Password</div>}
@@ -45,7 +55,10 @@ const SignupForm = () => {
                         },
                     ]}
                     className={classNames(styles['form-item'])}>
-                    <Input.Password size="large" />
+                    <Input.Password
+                        size="large"
+                        className="border-2"
+                    />
                 </Form.Item>
 
                 <Form.Item className={classNames(styles['form-item'])}>
@@ -53,12 +66,15 @@ const SignupForm = () => {
                         type="primary"
                         htmlType="submit"
                         style={{ width: '100%' }}
-                        size="large">
-                        Submit
+                        className={classNames(
+                            styles['button'],
+                            styles['primary-btn']
+                        )}>
+                        Signup
                     </Button>
                 </Form.Item>
             </Form>
-            <div style={{ color: 'rgba(16, 24, 52, 0.5)' }}>
+            <div style={{ color: 'rgba(16, 24, 52, 0.5)', fontSize: '14px' }}>
                 By signing up you accept our{' '}
                 <a
                     href="/"
