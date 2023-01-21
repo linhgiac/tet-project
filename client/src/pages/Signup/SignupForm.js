@@ -12,11 +12,7 @@ const SignupForm = () => {
       console.log('value', value);
       try {
           console.log('process.env.HOST', process.env.REACT_APP_HOST);
-          const response = await axios.post(
-              `${process.env.REACT_APP_HOST}/user/signup`,
-              value
-          );
-          console.log('response', response);
+          await axios.post(`${process.env.REACT_APP_HOST}/user/signup`, value);
           navigate('/');
       } catch (error) {
           console.log('error', error);

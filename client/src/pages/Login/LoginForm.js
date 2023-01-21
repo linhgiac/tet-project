@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 import styles from './Login.module.scss';
 import { Button, Form, Input } from 'antd';
@@ -7,7 +9,23 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const handleSubmit = () => {};
+    const handleSubmit = async value => {
+        console.log('value', value);
+        try {
+            const response = await axios.post(
+                `${process.env.REACT_APP_HOST}/user/login`,
+                value
+            );
+            // console.log('response', response);
+
+            const cookies = new Cookies();
+            cookies.set('accessToken', response.data.accessToken, {
+                path: '/',
+            });
+        } catch (error) {
+            console.log('error', error);
+        }
+    };
 
     return (
         <div className={classNames(styles['email-login-container'])}>

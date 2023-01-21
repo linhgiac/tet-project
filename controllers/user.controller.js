@@ -48,7 +48,7 @@ const userController = {
             //Save
             await newUser.save();
 
-            res.json({ msg: 'Signup Test', data: newUser });
+            res.json({ msg: 'Signup Successfully!', data: newUser });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
@@ -80,7 +80,7 @@ const userController = {
             const accessToken = await createAccessToken({ id: user._id });
             // console.log('accessToken', accessToken);
 
-            res.json({ msg: 'Login test!', accessToken });
+            res.json({ msg: 'Login successfully!', accessToken });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }

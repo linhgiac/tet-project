@@ -9,8 +9,8 @@ function App() {
     return (
         <Router>
             <div className="App">
-                {window.location.href.includes('signup') &&
-                    window.location.href.includes('login') && <Header />}
+                {!window.location.href.includes('signup') &&
+                    !window.location.href.includes('login') && <Header />}
                 <Routes>
                     <Route
                         path="/"
