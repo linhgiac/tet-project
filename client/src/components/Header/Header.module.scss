@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.container{
+  height: 58px;
+  border-bottom: solid 1px #ccc;
+}
 .logo{
   &:hover{
     cursor: pointer;
@@ -17,6 +21,12 @@
     &:hover{
       color: $primary-color;
       background-color: inherit;
+    }
+  }
+  .primary-btn{
+    background-color: $primary-color;
+    &:hover{
+      background-color: $hover-color;
     }
   }
 }

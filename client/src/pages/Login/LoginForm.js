@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 import styles from './Login.module.scss';
 import { Button, Form, Input } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { UserProvider } from '../../App';
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const [userState, setLoginState] = useContext(UserProvider);
+
     const handleSubmit = async value => {
         console.log('value', value);
         try {
@@ -22,6 +25,11 @@ const LoginForm = () => {
             cookies.set('accessToken', response.data.accessToken, {
                 path: '/',
             });
+            setLoginState({
+                accessToken: response.data.accessToken,
+                isLogged: true,
+            });
+            navigate('/');
         } catch (error) {
             console.log('error', error);
         }
@@ -71,10 +79,7 @@ const LoginForm = () => {
                         type="primary"
                         htmlType="submit"
                         style={{ width: '100%' }}
-                        className={classNames(
-                            styles['button'],
-                            styles['primary-btn']
-                        )}>
+                        className={classNames('button primary-btn')}>
                         Login
                     </Button>
                 </Form.Item>

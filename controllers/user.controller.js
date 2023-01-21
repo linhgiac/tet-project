@@ -85,7 +85,7 @@ const userController = {
             return res.status(500).json({ msg: error.message });
         }
     },
-    logout: (req, res) => {
+    logout: async (req, res) => {
         res.json({ msg: 'Logout successfully!' });
     },
 };

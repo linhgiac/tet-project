@@ -78,10 +78,7 @@ const SignupForm = () => {
                         type="primary"
                         htmlType="submit"
                         style={{ width: '100%' }}
-                        className={classNames(
-                            styles['button'],
-                            styles['primary-btn']
-                        )}>
+                        className={classNames('button', 'primary-btn')}>
                         Signup
                     </Button>
                 </Form.Item>
