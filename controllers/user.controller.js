@@ -8,6 +8,7 @@ const userController = {
     signup: async (req, res) => {
         try {
             const { name, email, password } = req.body;
+            let role;
 
             // Check fill all fields
             if (!name || !email || !password) {
@@ -43,6 +44,7 @@ const userController = {
                 name,
                 email,
                 password: hashPassword,
+                role: isEmpty(await Users.find()) ? 1 : 0,
             });
 
             //Save
@@ -87,6 +89,57 @@ const userController = {
     },
     logout: async (req, res) => {
         res.json({ msg: 'Logout successfully!' });
+    },
+    getUserInfor: async (req, res) => {
+        try {
+            const user = await Users.findById(req.user.id).select('-password');
+            res.status(200).json({ msg: 'GET successfully!', data: user });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    getUsersAllInfor: async (req, res) => {
+        try {
+            const users = await Users.find().select('-password');
+            console.log('users :>> ', users);
+            res.status(200).json({ msg: 'GET successfully', data: users });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    updateUserInfor: async (req, res) => {
+        try {
+            const { name, avatar } = req.body;
+
+            await Users.findOneAndUpdate(
+                { _id: req.user.id },
+                { name, avatar }
+            );
+            const user = await Users.findById(req.user.id);
+            console.log('user :>> ', user);
+            res.status(200).json({ msg: 'Update successfully!', data: user });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    updateUserRole: async (req, res) => {
+        try {
+            const { role } = req.body;
+            console.log('req.params :>> ', req.params);
+            await Users.findByIdAndUpdate(req.params.id, { role });
+            const user = await Users.findById(req.params.id);
+            res.status(200).json({ msg: 'Update successfully!', data: user });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    deleteUser: async (req, res) => {
+        try {
+            await Users.findByIdAndDelete(req.params.id);
+            res.status(200).json('Delete successfully!');
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
     },
 };
 

@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: '../resources/image/default-avatar.jpeg',
         },
+        role: {
+            type: Number,
+            default: 0,
+        },
     },
     {
         timestamps: true,
