@@ -20,11 +20,11 @@ const SignupForm = () => {
   };
     return (
         <div className={classNames(styles['email-signup-container'])}>
-            <div
+            {/* <div
                 style={{ color: 'rgba(16, 24, 52, 0.5)', fontSize: '14px' }}
                 className={classNames('mt-8 mb-4')}>
                 or using email
-            </div>
+            </div> */}
             <Form
                 name="signupForm"
                 layout="vertical"

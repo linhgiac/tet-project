@@ -6,6 +6,9 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Templates from './pages/Template/Templates';
+import Tutorials from './pages/Tutorials/Tutorials';
 
 export const UserProvider = createContext();
 
@@ -26,6 +29,18 @@ function App() {
                         <Route
                             path="/"
                             element={<Home />}
+                        />
+                        <Route
+                            path="/app/dashboard"
+                            element={<Dashboard />}
+                        />
+                        <Route
+                            path="/app/templates"
+                            element={<Templates />}
+                        />
+                        <Route
+                            path="/app/tutorials"
+                            element={<Tutorials />}
                         />
                         <Route
                             path="/login"

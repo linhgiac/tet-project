@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
@@ -6,10 +6,20 @@ import classNames from 'classnames';
 import HeaderButton from './HeaderButton';
 import HeaderProfile from './HeaderProfile';
 import { UserProvider } from '../../App';
+import { Button } from 'antd';
 
 const Header = () => {
     const navigate = useNavigate();
+    const [currentPath, setCurrentPath] = useState('/');
     const [userState, setLoginState] = useContext(UserProvider);
+
+    useEffect(() => {
+        setCurrentPath(window.location.pathname);
+    }, [navigate]);
+
+    useEffect(() => {
+        console.log('currentPath :>> ', currentPath);
+    }, [currentPath]);
     return (
         <>
             {userState.isLogged ? (
@@ -25,7 +35,22 @@ const Header = () => {
                         {' '}
                         Logo
                     </div>
-                    <HeaderProfile />
+                    {currentPath === '/' ? (
+                        <Button
+                            type="primary"
+                            className={classNames(
+                                'button primary-btn',
+                                'mr-10 mb-0'
+                            )}>
+                            <a
+                                className={styles.text}
+                                href="/app">
+                                My Presentation
+                            </a>
+                        </Button>
+                    ) : (
+                        <HeaderProfile />
+                    )}
                 </div>
             ) : (
                 <div

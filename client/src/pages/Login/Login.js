@@ -34,13 +34,10 @@ const Login = () => {
                         )}>
                         <Button
                             type="primary"
-                            className={classNames(
-                                styles['button'],
-                                styles['primary-btn']
-                            )}>
+                            className={classNames('button', 'primary-btn')}>
                             Login with Facebook
                         </Button>
-                        <Button className={classNames(styles['button'])}>
+                        <Button className={classNames('button')}>
                             Login with Google
                         </Button>
                     </div>

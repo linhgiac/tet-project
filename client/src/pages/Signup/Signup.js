@@ -23,23 +23,20 @@ const Signup = () => {
                     Create a free account
                 </div>
                 <div className="mx-28">
-                    <div
+                    {/* <div
                         className={classNames(
                             'flex flex-col',
                             styles['third-party-signup-btn']
                         )}>
                         <Button
                             type="primary"
-                            className={classNames(
-                                styles['button'],
-                                styles['primary-btn']
-                            )}>
+                            className={classNames('button', 'primary-btn')}>
                             Signup with Facebook
                         </Button>
-                        <Button className={classNames(styles['button'])}>
+                        <Button className={classNames('button')}>
                             Signup with Google
                         </Button>
-                    </div>
+                    </div> */}
                     <SignupForm />
                     <div className={classNames('mt-8 font-bold text-xl')}>
                         Already have an account?{' '}
