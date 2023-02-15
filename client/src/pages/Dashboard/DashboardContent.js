@@ -59,9 +59,9 @@ const DashboardContent = () => {
                         ]}></Select>
                 </div>
             </div>
-            {/* <div>
+            <div>
                 <DashboardTable />
-            </div> */}
+            </div>
         </Content>
     );
 };
