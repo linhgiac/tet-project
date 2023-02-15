@@ -5,15 +5,27 @@
   margin-bottom: 12px;
   font-weight: 600;
 }
+.input{
+  height: 40px;
+  // margin-bottom: 12px;
+}
+
 .primary-btn{
   background-color: $primary-color;
   &:hover{
-    background-color: $hover-color;
+    background-color: $hover-primary-color;
   }
 }
 .text-btn{
   &:hover{
     color: $primary-color;
     background-color: inherit;
+  }
+}
+.default-btn{
+  background-color: $default-color;
+  color: rgb(16, 24, 52);
+  &:hover{
+    background-color: $hover-default-color;
   }
 }
