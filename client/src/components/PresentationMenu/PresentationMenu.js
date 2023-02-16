@@ -18,19 +18,19 @@ const PresentationMenu = ({ selectedKey, onClick }) => {
     const items = [
         getItem(
             <div className={classNames('font-semibold hover:opacity-60')}>
-                My Presentation
+                My Presentations
             </div>,
             'dashboard'
         ),
         getItem(
             <div className={classNames('font-semibold hover:opacity-60')}>
-                Template
+                Templates
             </div>,
             'templates'
         ),
         getItem(
             <div className={classNames('font-semibold hover:opacity-60')}>
-                Tutorial
+                Tutorials
             </div>,
             'tutorials'
         ),

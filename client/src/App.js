@@ -3,12 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 import Header from './components/Header/Header';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Templates from './pages/Template/Templates';
-import Tutorials from './pages/Tutorials/Tutorials';
+
+import { publicRoutes, appRoutes } from './routes/routes';
 
 export const UserProvider = createContext();
 
@@ -26,30 +22,25 @@ function App() {
                     {!window.location.href.includes('signup') &&
                         !window.location.href.includes('login') && <Header />}
                     <Routes>
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                        <Route
-                            path="/app/dashboard"
-                            element={<Dashboard />}
-                        />
-                        <Route
-                            path="/app/templates"
-                            element={<Templates />}
-                        />
-                        <Route
-                            path="/app/tutorials"
-                            element={<Tutorials />}
-                        />
-                        <Route
-                            path="/login"
-                            element={<Login />}
-                        />
-                        <Route
-                            path="/signup"
-                            element={<Signup />}
-                        />
+                        {publicRoutes.map((route, index) => {
+                            return (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    element={route.component}
+                                />
+                            );
+                        })}
+
+                        {appRoutes.map((route, index) => {
+                            return (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    element={route.component}
+                                />
+                            );
+                        })}
                     </Routes>
                 </div>
             </Router>

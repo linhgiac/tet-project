@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Signup.module.scss';
 import classNames from 'classnames';
 
-import { Button } from 'antd';
 import SignupForm from './SignupForm';
 
 const Signup = () => {
