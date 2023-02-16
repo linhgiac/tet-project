@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './Header.module.scss';
-
 import classNames from 'classnames';
-
 import { Button } from 'antd';
+
+import styles from '../Header.module.scss';
 
 const HeaderButton = ({ className, ...props }) => {
     return (

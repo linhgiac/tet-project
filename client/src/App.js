@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 
 import { publicRoutes, appRoutes } from './routes/routes';
 
@@ -19,8 +19,8 @@ function App() {
         <UserProvider.Provider value={userState}>
             <Router>
                 <div className="App">
-                    {!window.location.href.includes('signup') &&
-                        !window.location.href.includes('login') && <Header />}
+                    {/* {!window.location.href.includes('signup') &&
+                        !window.location.href.includes('login') && <DeHeader />} */}
                     <Routes>
                         {publicRoutes.map((route, index) => {
                             return (

@@ -5,12 +5,5 @@ export const routesConfigs = {
 };
 export const appRoutesConfigs = {
     dashboard: '/app/dashboard',
-    templates: {
-        templates: '/app/templates',
-        'business-templates': '/app/templates/business-templates',
-        'education-templates': '/app/templates/education-templates',
-        'quiz-templates': '/app/templates/quiz-templates',
-    },
-
-    tutorials: '/app/tutorials',
+    presentation: '/app/presentation/me/1/edit'
 };

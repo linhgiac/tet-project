@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Dropdown } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import {
     EllipsisOutlined,
     PlayCircleOutlined,
@@ -83,12 +84,22 @@ const TableActionMenu = () => {
     );
 };
 const DashboardTable = () => {
+    const navigate = useNavigate()
     const columns = [
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: text => `${text}`,
+            render: (text, record, index) => {
+                return (
+                    <div
+                        onClick={() => {
+                            navigate(`/app/presentation/${record.owner}/${record.id}/edit`)
+                        }}>
+                        {text}
+                    </div>
+                );
+            },
         },
         {
             title: 'Owner',
@@ -116,6 +127,7 @@ const DashboardTable = () => {
     for (let i = 0; i < 5; i++) {
         data.push({
             key: i,
+            id: 1,
             name: `Edward King ${i}`,
             owner: 'me',
             modified: Date.now(),
