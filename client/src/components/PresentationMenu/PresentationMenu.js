@@ -41,7 +41,6 @@ const PresentationMenu = ({ selectedKey, onClick }) => {
     };
     return (
         <Menu
-            
             style={{ height: '100%' }}
             items={items}
             defaultSelectedKeys={[selectedKey]}
